@@ -148,6 +148,7 @@ export default {
     },
 
     logOut(){
+      window.sessionStorage.setItem('current_CharacterCorp', '')
       window.sessionStorage.setItem('access_token', '')
       window.sessionStorage.setItem('refresh_token', '')
       window.sessionStorage.setItem('expires_token', '')

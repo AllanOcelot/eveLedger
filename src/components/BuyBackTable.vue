@@ -14,22 +14,22 @@
       <div class="item-table">
         <div class="head">
           <div class="item icon-cont">
-            Image:
+            <span>Image:</span>
           </div>
           <div class="item">
-            Name:
+            <span>Name:</span>
           </div>
           <div class="item">
-            Quantity:
+            <span>Quantity:</span>
           </div>
           <div class="item">
-            Notes:
+            <span>Notes:</span>
           </div>
           <div class="item">
-            Market Price:
+            <span>Market Price:</span> <small> ( Per Item ) </small>
           </div>
           <div class="item">
-            Corp Price:
+            <span>Corp Buys:</span> <small >( Per Item ) </small>
           </div>
         </div>
         <div class="data" v-if="loadBuyBackItemsComplete === true && buyBackData">
@@ -248,6 +248,9 @@ export default {
   },
   props: ['isCEO'],
   mounted () {
+    // First, get the title for this section. 
+    this.getTitle();
+
     // When mounted, fetch the buyback details for the corp.
     this.getCorpBuyBackDetails(sessionStorage.getItem('current_CharacterCorp'),sessionStorage.getItem('current_CharacterID'));
   },
@@ -350,7 +353,16 @@ export default {
       })
     },
 
-
+    async getTitle(){
+      await axios.get('http://127.0.0.1:8000/getTitle/BuyBack/' + sessionStorage.getItem('current_CharacterCorp') + '/' + sessionStorage.getItem('current_CharacterID')).then(response => {
+        this.loadingTitle = false;
+        this.Title = response.data;
+      }).catch(error => {
+        this.loadingTitle = false;
+        this.title = 'There was an error getting this information, sorry.'
+        return error;
+      })
+    },
 
     async selectItem(index) {
       var convert = require('xml-js');
@@ -415,6 +427,7 @@ export default {
     flex: 1;
     height: auto;
     min-height: 0;
+    position: relative;
   }
 
   .item-table {
@@ -452,8 +465,29 @@ export default {
         }
       }
     }
+    .head {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      left: 20px;
+      width: calc(100% - 40px);
+      padding-right: 17px;
+      .item {
+        flex-direction: column;
+      }
+      span {
+        width: 100%;
+      }
+      small {
+        width: 100%;
+        font-size: 12px;
+      }
+    }
     .data {
       display: block;
+      padding-top: 80px;
 
       .no-items {
         width: 100%; 

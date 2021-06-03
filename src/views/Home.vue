@@ -3,8 +3,9 @@
       <Header />
       <div class="hero-container">
         <div class="content-container">
-          <h1>[AppName]</h1>
-          <p>Makes it easy for corps to manage and share important information.</p>
+          <h1>Evetricity</h1>
+          <h2>Make corp management fun again</h2>
+          <LoginButton />
         </div>
       </div>
       <div class="feature-container">
@@ -66,6 +67,7 @@
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
+import LoginButton from '@/components/LoginButton.vue'
 
 export default {
   name: 'Home',
@@ -75,7 +77,8 @@ export default {
     }
   },
   components : {
-    Header
+    Header,
+    LoginButton
   },
   mounted () {
   },
@@ -100,7 +103,7 @@ export default {
       text-align: center;
       background: rgba(0, 0, 0, 0.65);
       color: #fff;
-      min-height: 80vh;
+      min-height: 300px;
       align-items: center;
       justify-content: center;
       display: flex;
@@ -108,12 +111,19 @@ export default {
       border-bottom: 1px solid rgba(255,255,255,0.3);
 
       h1 {
-        font-size: 32px;
+        font-size: 50px;
         font-weight: bold;
-      }
-      p {
-        font-size: 20px;
+        pointer-events: none;
         margin-bottom: 0;
+      }
+      h2 {
+        font-size: 20px;
+        pointer-events: none;
+        margin-bottom: 20px;
+      }
+      a {
+        width: 220px !important;
+        height: auto;
       }
     }
   }

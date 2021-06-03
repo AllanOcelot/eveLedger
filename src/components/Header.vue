@@ -1,47 +1,41 @@
 <template>
   <div id="nav">
       <div class="left-aligned">
-        [APPNAME]
+        Evetricity
       </div>
       <!-- links -->
       <div class="right-aligned">
         <ul class="link-container">
+          <!--
           <li>
             <router-link to="/">F.A.Q</router-link>
           </li>
           <li>
             <router-link to="/about">Documentation</router-link>
           </li>
+          -->
         </ul>
-        <a :href="loginURL" v-if="isLoggedIn === false" class="loginButton">
-          <img src="@/assets/images/eve-sso-login-black-small.png" alt="Login With Eve Online">
-        </a>
+        <LoginButton />
       </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import LoginButton from '@/components/LoginButton.vue'
 
 export default {
   name: 'Header',
   data () {
     return {
-      loginURL: '',
-      isLoggedIn: false,
+
     }
+  },
+  components : {
+    LoginButton,
   },
   mounted () {
-    this.generateLoginURL()
   },
   methods : {
-    generateLoginURL(){
-      axios.get('http://127.0.0.1:8000/generateLoginURL').then(response => {
-        this.loginURL = response.data;
-      }).catch(error => {
-        console.log(error)
-      });
-    }
   }
 }
 </script>
@@ -54,7 +48,7 @@ export default {
     left: 0;
     width: 100%;
     height: 50px;
-    background: #1d1d1d;
+    background: #ececec;
     border-bottom: 1px solid rgba(255,255,255,0.3);
     padding: 0 20px;
     z-index: 100;
@@ -75,9 +69,21 @@ export default {
     display: flex;
     align-items: center;
     height: 100%;
-    color: #fff;
+    color: #030419;
     font-weight: 900;
+    text-shadow: none;
+    animation: blinker 4s linear infinite;
   }
+
+  @keyframes blinker {
+    0% {opacity:0;}
+    9% {opacity:0;}
+    10% {opacity:.5;}
+    13% {opacity:0;}
+    20% {opacity:.5;}
+    25% {opacity:1;}
+  }
+
 
   .right-aligned {
     float: right;
