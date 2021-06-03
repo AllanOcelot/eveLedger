@@ -337,6 +337,7 @@ export default {
         if(response.data.description != '' && response.data.description != null && !response.data.name.includes('SKIN')){
           let data = response.data;
               data.icon = 'https://images.evetech.net/types/' + itemID + '/icon'
+              data.description = response.data.description.replace(/(<([^>]+)>)/gi, "");
           this.$set(this.searchResultItems, this.searchResultItems.length, response.data)
 
           // on the last item, sort the array. 
@@ -354,7 +355,7 @@ export default {
     },
 
     async getTitle(){
-      await axios.get('http://127.0.0.1:8000/getTitle/BuyBack/' + sessionStorage.getItem('current_CharacterCorp') + '/' + sessionStorage.getItem('current_CharacterID')).then(response => {
+      await axios.get('https://eveledger.herokuapp.com/getTitle/BuyBack/' + sessionStorage.getItem('current_CharacterCorp') + '/' + sessionStorage.getItem('current_CharacterID')).then(response => {
         this.loadingTitle = false;
         this.Title = response.data;
       }).catch(error => {
