@@ -185,11 +185,20 @@ export default {
     async getCorpInfo(corpID){
       await axios.get('https://esi.evetech.net/latest/corporations/'+ corpID +'/?datasource=tranquility').then(response => {
         let dataObject = response.data;
-        axios.post('https://eveledger.herokuapp.com/fb/init/corp/' + corpID,{ data: dataObject });
+        this.initCorp(corpID, dataObject)
         return true;
       }).catch(error => {
         console.log(error)
         return false;
+      });
+    },
+
+    // Check / Create corp on server 
+    async initCorp(corpID, dataObject){
+      await axios.post('https://eveledger.herokuapp.com/fb/init/corp/' + corpID,{ data: dataObject }).then( _ => {
+          console.log('Finished checking for or creating corp on firebase')
+          console.log('_')
+          return true;
       });
     },
 
@@ -387,6 +396,7 @@ export default {
       min-height: 120px;
       overflow: auto;
       border-bottom: 1px solid rgba(255,255,255,0.3);
+      flex-direction: column;
       h2 {
         font-size: 1.5em;
       }

@@ -24,7 +24,7 @@ export default {
   },
   methods : {
     generateLoginURL(){
-      axios.get('http://127.0.0.1:8000/generateLoginURL').then(response => {
+      axios.get('https://eveledger.herokuapp.com/generateLoginURL').then(response => {
         this.loginURL = response.data;
       }).catch(error => {
         console.log(error)

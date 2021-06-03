@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     generateLoginURL(){
-      if(sessionStorage.getItem('current_CharacterCorp') &&       sessionStorage.getItem('current_CharacterCorp').length > 0){
+      if(!sessionStorage.getItem('current_CharacterCorp') || sessionStorage.getItem('current_CharacterCorp').length <= 0 ){
         axios.get('https://eveledger.herokuapp.com/generateLoginURL').then(response => {
           this.loginURL = response.data;
         }).catch(error => {
