@@ -10,61 +10,64 @@
       </div>
     </div>
 
-    <div class="item-table">
-      <div class="head">
-        <div class="item icon-cont">
-          Image:
-        </div>
-        <div class="item">
-          Name:
-        </div>
-        <div class="item">
-          Quantity:
-        </div>
-        <div class="item">
-          Notes:
-        </div>
-        <div class="item">
-          Market Price:
-        </div>
-        <div class="item">
-          Corp Price:
-        </div>
-      </div>
-      <div class="data" v-if="loadBuyBackItemsComplete === true && buyBackData">
-        <div v-if="buyBackData.length === 0">
-          <p class="no-items">There are currently no buyback items configured for this corp.</p>
-        </div>
-        <div class="row" v-else v-for="item in buyBackData" :key="item.name">
+    <div class="item-table-wrapper">
+      <div class="item-table">
+        <div class="head">
           <div class="item icon-cont">
-            <div class="icon">
-              <img :src="item.icon" alt="">
+            Image:
+          </div>
+          <div class="item">
+            Name:
+          </div>
+          <div class="item">
+            Quantity:
+          </div>
+          <div class="item">
+            Notes:
+          </div>
+          <div class="item">
+            Market Price:
+          </div>
+          <div class="item">
+            Corp Price:
+          </div>
+        </div>
+        <div class="data" v-if="loadBuyBackItemsComplete === true && buyBackData">
+          <div v-if="buyBackData.length === 0">
+            <p class="no-items">There are currently no buyback items configured for this corp.</p>
+          </div>
+          <div class="row" v-else v-for="item in buyBackData" :key="item.name">
+            <div class="item icon-cont">
+              <div class="icon">
+                <img :src="item.icon" alt="">
+              </div>
+            </div>
+            <div class="item">
+              {{item.name}}
+            </div>
+            <div class="item">
+              {{item.quantity}}
+            </div>
+            <div class="item">
+              {{item.notes}}
+            </div>
+            <div class="item">
+              {{item.marketPrice}}
+            </div>
+            <div class="item">
+              {{item.corpPrice}}
             </div>
           </div>
-          <div class="item">
-            {{item.name}}
-          </div>
-          <div class="item">
-            {{item.quantity}}
-          </div>
-          <div class="item">
-            {{item.notes}}
-          </div>
-          <div class="item">
-            {{item.marketPrice}}
-          </div>
-          <div class="item">
-            {{item.corpPrice}}
-          </div>
+        </div>
+        <div class="pre-loader" v-if="loadBuyBackItemsComplete === false">
+          <i class="fas fa-circle-notch fa-spin"></i>
         </div>
       </div>
-      <div class="pre-loader" v-if="loadBuyBackItemsComplete === false">
-        <i class="fas fa-circle-notch fa-spin"></i>
-      </div>
-      <div class="add-new-item-action" v-if="isCEO === true && loadBuyBackItemsComplete === true">
-        <div class="action" @click="displayModal = true">
-          Add New Item
-        </div>
+    </div>
+
+    <div class="add-new-item-action" v-if="isCEO === true && loadBuyBackItemsComplete === true">
+      <div class="action" @click="displayModal = true">
+        Add New Item
       </div>
     </div>
 
@@ -268,7 +271,7 @@ export default {
 
     async getCorpBuyBackDetails(corpID, charID){
       this.loadBuyBackItemsComplete = false;
-      return await axios.get('http://127.0.0.1:8000/getBuyBack/' + corpID + '/' + charID).then(response => {
+      return await axios.get('https://eveledger.herokuapp.com/getBuyBack/' + corpID + '/' + charID).then(response => {
         this.closeAndClear()
         this.buyBackData = response.data;
         this.loadBuyBackItemsComplete = true;
@@ -281,7 +284,7 @@ export default {
 
     addBuyBackItem(){
       this.stage = 4;
-        axios.post('http://127.0.0.1:8000/addBuyBack/'+ sessionStorage.getItem('current_CharacterCorp') +'/' + sessionStorage.getItem('current_CharacterID'),
+        axios.post('https://eveledger.herokuapp.com/addBuyBack/'+ sessionStorage.getItem('current_CharacterCorp') +'/' + sessionStorage.getItem('current_CharacterID'),
         { data: this.buyOrderDetails }).then(response => {
           setTimeout(_ => {
             console.log(_)
@@ -305,7 +308,7 @@ export default {
       this.loading = true;
 
       // make a request to the search api for the search term.
-      await axios.get('http://127.0.0.1:8000/search/' + encodeURI(this.itemSearchString)).then(response => {
+      await axios.get('https://eveledger.herokuapp.com/search/' + encodeURI(this.itemSearchString)).then(response => {
         let results = response.data.inventory_type;
         // Loop over each item ID and look up the item.
         results.forEach((element, index) => {
@@ -326,7 +329,7 @@ export default {
     },
 
     async getItemDetails(itemID, isLastItem){
-      await axios.get('http://127.0.0.1:8000/searchItem/' + itemID).then(response => {
+      await axios.get('https://eveledger.herokuapp.com/searchItem/' + itemID).then(response => {
         // only return items that have a description, or if their name contains 'SKIN'
         if(response.data.description != '' && response.data.description != null && !response.data.name.includes('SKIN')){
           let data = response.data;
@@ -398,9 +401,28 @@ export default {
 
 
 <style lang="scss" scoped>
-  .item-table {
+  .buyback-table-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+  .item-table-wrapper {
+    display: flex;
+    padding: 0 20px;
+    margin: auto;
     width: 100%;
-    padding: 20px;
+    flex: 1;
+    height: auto;
+    min-height: 0;
+  }
+
+  .item-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
     .head,
     .row {
       display: flex;
@@ -475,6 +497,14 @@ export default {
       width: 100%;
       padding: 40px 0;
     }
+  }
+
+  .add-new-item-action {
+    margin: 20px 0;
+    display: flex;
+    min-height: 48px;
+    justify-content: flex-end;
+    padding: 0 20px !important;
   }
 
   .modal {

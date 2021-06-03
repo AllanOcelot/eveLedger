@@ -112,7 +112,7 @@ export default {
     }
 
     // Get the server status for eve. 
-    axios.get('http://127.0.0.1:8000/server/').then(response => {
+    axios.get('https://eveledger.herokuapp.com/server/').then(response => {
       this.server.loaded = true;
       this.server.online = true;
       this.server.playercount = response.data.players;
@@ -159,7 +159,7 @@ export default {
 
     // Only needed to get the LOGGED IN character ID.
     async getChar(code){
-      await axios.get('http://127.0.0.1:8000/getChar/' + code).then(response => {
+      await axios.get('https://eveledger.herokuapp.com/getChar/' + code).then(response => {
         window.sessionStorage.setItem('current_CharacterID', response.data.CharacterID)
         window.sessionStorage.setItem('current_CharacterName', response.data.CharacterName)
         this.currentChar = response.data.CharacterID;
@@ -184,7 +184,7 @@ export default {
     async getCorpInfo(corpID){
       await axios.get('https://esi.evetech.net/latest/corporations/'+ corpID +'/?datasource=tranquility').then(response => {
         let dataObject = response.data;
-        axios.post('http://127.0.0.1:8000/fb/init/corp/' + corpID,{ data: dataObject });
+        axios.post('https://eveledger.herokuapp.com/fb/init/corp/' + corpID,{ data: dataObject });
         return true;
       }).catch(error => {
         console.log(error)
@@ -208,7 +208,7 @@ export default {
     },
 
     async getCorpRoles(corpID){
-      await axios.get('http://127.0.0.1:8000/getCorpRoles/' + corpID).then(response => {
+      await axios.get('https://eveledger.herokuapp.com/getCorpRoles/' + corpID).then(response => {
         console.log(response)
         return true;
       }).catch(error => {
@@ -216,14 +216,8 @@ export default {
       });
     },
 
-
     async refreshToken(code){
-      console.log('testing')
-      console.log(code)
-      console.log(encodeURIComponent(code))
-
-      await axios.get('http://127.0.0.1:8000/eveRefresh/' + encodeURIComponent(code)).then(response => {
-        console.log('Refresh token completed, setting values')
+      await axios.get('https://eveledger.herokuapp.com/eveRefresh/' + encodeURIComponent(code)).then(response => {
         window.sessionStorage.setItem('access_token', response.data.access_token)
         window.sessionStorage.setItem('refresh_token', response.data.refresh_token)
         return true;
@@ -381,6 +375,7 @@ export default {
 
     // Info block at the top of each view.
     .information-section {
+      display: flex;
       background: #050810c4;
       color: #dcdcdc;
       text-align: left;
@@ -388,6 +383,7 @@ export default {
       cursor: default;
       margin-bottom: 20px;
       height: 120px;
+      min-height: 120px;
       overflow: auto;
       border-bottom: 1px solid rgba(255,255,255,0.3);
       h2 {

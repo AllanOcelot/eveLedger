@@ -26,6 +26,10 @@ body {
   margin: 0;
 }
 
+html {
+  overflow-y: auto !important;
+}
+
 #app {
   display: flex;
   flex: 1;

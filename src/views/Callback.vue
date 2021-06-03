@@ -36,7 +36,7 @@ export default {
     },
 
     getEveAuth(code){
-      axios.get('http://127.0.0.1:8000/eveAuth/' + code).then(response => {
+      axios.get('https://eveledger.herokuapp.com/eveAuth/' + code).then(response => {
         window.sessionStorage.setItem('access_token', response.data.access_token)
         window.sessionStorage.setItem('refresh_token', response.data.refresh_token)
         window.sessionStorage.setItem('expires_token', response.data.expires_in)
