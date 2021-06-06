@@ -10,18 +10,22 @@
                :class="{'active' : currentTab === 'Home'}">
             Home
           </div>
+          <!-- 
           <div class="tab-item" @click="changeTab('Assignments')"
                :class="{'active' : currentTab === 'Assignments'}">
             Assignments
           </div>
+          -->
           <div class="tab-item" @click="changeTab('Prices')"
               :class="{'active' : currentTab === 'Prices'}">
             Buyback
           </div>
+          <!--
           <div class="tab-item" @click="changeTab('Settings')"
               :class="{'active' : currentTab === 'Settings'}">
             Settings
           </div>
+          -->
           <div class="tab-item" @click="logOut()">
             Log Out
           </div>

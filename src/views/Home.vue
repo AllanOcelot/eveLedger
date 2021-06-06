@@ -3,7 +3,7 @@
       <Header />
       <div class="hero-container">
         <div class="content-container">
-          <h1>Evetricity</h1>
+          <h1><span class="blue">Eve</span><span class="yellow">tricity</span></h1>
           <h2>Make corp management fun again</h2>
           <LoginButton />
         </div>
@@ -89,7 +89,6 @@ export default {
 </script>
 <style scoped lang="scss">
   .hero-container {
-    margin-top: 50px;
     background-image: url('../assets/images/bg1.png');
     background-position: center center;
     background-repeat: no-repeat;
@@ -103,18 +102,50 @@ export default {
       text-align: center;
       background: rgba(0, 0, 0, 0.65);
       color: #fff;
-      min-height: 300px;
+      min-height: 625px;
+      height: 90vh;
       align-items: center;
       justify-content: center;
       display: flex;
       flex-direction: column;
       border-bottom: 1px solid rgba(255,255,255,0.3);
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background: rgba(0,0,0,0.2);
+        z-index: 0;
+      }
 
       h1 {
-        font-size: 50px;
+        position: relative;
+        z-index: 10;
+        font-size: 70px;
         font-weight: bold;
         pointer-events: none;
         margin-bottom: 0;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #fff;
+        text-shadow: 0px 0px 22px rgb(255 255 255 / 50%);
+        .blue {
+          color: #023592;
+        }
+        .yellow {
+          color: #f7a025;
+          animation: blinker 3.3s linear infinite;
+        }
+        @keyframes blinker {
+          0% {opacity:0.2;}
+          9% {opacity:0.2;}
+          10% {opacity:.5;}
+          13% {opacity:0.2;}
+          20% {opacity:.3;}
+          25% {opacity:1;}
+        }
       }
       h2 {
         font-size: 20px;

@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
       <div class="left-aligned">
-        Evetricity
+        <span class="blue">Eve</span><span class="yellow">tricity</span>
       </div>
       <!-- links -->
       <div class="right-aligned">
@@ -48,9 +48,9 @@ export default {
     left: 0;
     width: 100%;
     height: 50px;
-    background: #ececec;
     border-bottom: 1px solid rgba(255,255,255,0.3);
     padding: 0 20px;
+    background: #0a0a1375;
     z-index: 100;
   }
 
@@ -72,7 +72,13 @@ export default {
     color: #030419;
     font-weight: 900;
     text-shadow: none;
-    animation: blinker 4s linear infinite;
+
+    .blue {
+      color: #023592;
+    }
+    .yellow {
+      color: #f7a025;
+    }
   }
 
   @keyframes blinker {
