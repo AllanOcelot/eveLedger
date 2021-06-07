@@ -3,9 +3,11 @@
     <Header />
     <div class="faq-container">
       <div class="intro">
-        <h1>FAQ:</h1>
-        <p>Please find below a collection of commonly asked questions and answers about Evetricity.</p>
-        <p>If there is a question you have, you can always <a href="help@evetricity.com">Reach Out To Me</a></p>
+        <div class="content">
+          <h1>FAQ:</h1>
+          <p>Please find below a collection of commonly asked questions and answers about Evetricity.</p>
+          <p>If there is a question you have, you can always <a href="help@evetricity.com">Reach Out To Me</a></p>
+        </div>
       </div>
       <div class="main">
         <div class="faq-item">
@@ -111,15 +113,27 @@ export default {
     .intro {
       margin-bottom: 40px;
       background: rgba(0,0,0,0.5);
+      background-image: url('../assets/images/faq-bg-2.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
       width: 100%;
-      padding: 100px 0;
-      h1 {
-        font-size: 50px;
-      }
-      p {
+      z-index: 0;
+      .content {
+        display: block;
+        position: relative;
+        padding: 100px 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 1;
+        h1 {
+          font-size: 50px;
+          color: #f1f1f1;
+        }
+        p {
 
-        &:last-of-type {
-          margin-bottom: 0;
+          &:last-of-type {
+            margin-bottom: 0;
+          }
         }
       }
     }
@@ -133,13 +147,15 @@ export default {
         cursor: default;
         text-align: left;
         margin-bottom: 40px;
+        border-radius: 1px;
+        border: 1px solid rgba(255,255,255,0.2);
 
         p.question {
           display: block;
           font-size: 24px;
           margin: 0;
           padding: 10px 20px;
-          background: rgb(0 54 152 / 75%);
+          background: rgb(1 29 80 / 75%);
         }
 
         .answer {
