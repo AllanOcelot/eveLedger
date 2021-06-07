@@ -19,45 +19,45 @@
           </div>
           <div class="feature">
             <div class="icon-block">
-              <i class="fas fa-wrench"></i>
-            </div>
-            <p class="title">Ship Fitting:</p>
-            <p class="main">Share fits, allow users to copy them directly to game. Keep them organised and easily updated.</p>
-          </div>
-          <div class="feature">
-            <div class="icon-block">
-              <i class="fas fa-globe-americas"></i>
-            </div>
-            <p class="title">Structures &amp; Systems :</p>
-            <p class="main">List Structures and Systems easily. View their latest information and add your own notes to each item.</p>
-          </div>
-          <div class="feature">
-            <div class="icon-block">
-              <i class="fas fa-folder-open"></i>
-            </div>
-            <p class="title">External Informaiton Sources:</p>
-            <p class="main">Sort external tools, documents and communications information. In one place.</p>
-          </div>
-          <div class="feature">
-            <div class="icon-block">
-              <i class="fas fa-medal"></i>
-            </div>
-            <p class="title">Ranks &amp; Awards</p>
-            <p class="main">Show a detailed corp heiarachy of members. List all your corp's awards, with their criteria for awarding.</p>
-          </div>
-          <div class="feature">
-            <div class="icon-block">
-              <i class="fas fa-skull"></i>
-            </div>
-            <p class="title">ZKillBoard Listings:</p>
-            <p class="main">Quickly view recent Corp &amp; Alliance killmails, powered by <a href="https://zkillboard.com/" target="_blank">ZKillBoard's</a> API!</p>
-          </div>
-          <div class="feature">
-            <div class="icon-block">
               <i class="fas fa-shopping-basket"></i>
             </div>
             <p class="title">BuyBack Program Listings:</p>
             <p class="main">Add products to your buyback program, compare your price with the latest market data from <a href="https://evemarketer.com/">Eve Marketer</a></p>
+          </div>
+          <div class="feature planned">
+            <div class="icon-block">
+              <i class="fas fa-wrench"></i>
+            </div>
+            <p class="title"><small>PLANNED</small> Ship Fitting:</p>
+            <p class="main">Share fits, allow users to copy them directly to game. Keep them organised and easily updated.</p>
+          </div>
+          <div class="feature planned">
+            <div class="icon-block">
+              <i class="fas fa-globe-americas"></i>
+            </div>
+            <p class="title"><small>PLANNED</small> Structures &amp; Systems :</p>
+            <p class="main">List Structures and Systems easily. View their latest information and add your own notes to each item.</p>
+          </div>
+          <div class="feature planned">
+            <div class="icon-block">
+              <i class="fas fa-folder-open"></i>
+            </div>
+            <p class="title"><small>PLANNED</small> External Informaiton Sources:</p>
+            <p class="main">Sort external tools, documents and communications information. In one place.</p>
+          </div>
+          <div class="feature planned">
+            <div class="icon-block">
+              <i class="fas fa-medal"></i>
+            </div>
+            <p class="title"><small>PLANNED</small> Ranks &amp; Awards</p>
+            <p class="main">Show a detailed corp heiarachy of members. List all your corp's awards, with their criteria for awarding.</p>
+          </div>
+          <div class="feature planned">
+            <div class="icon-block">
+              <i class="fas fa-skull"></i>
+            </div>
+            <p class="title"><small>PLANNED</small> ZKillBoard Listings:</p>
+            <p class="main">Quickly view recent Corp &amp; Alliance killmails, powered by <a href="https://zkillboard.com/" target="_blank">ZKillBoard's</a> API!</p>
           </div>
         </div>
       </div>
@@ -210,6 +210,11 @@ export default {
           margin: 0 0 10px 0;
           padding:0 20px;
           cursor: default;
+          small {
+            display: block;
+            margin: -20px 0 5px 0;
+            width: 100%;
+          }
         }
         p.main {
           padding: 0 20px;
@@ -220,6 +225,10 @@ export default {
         p a {
           color: #fff !important;
           text-decoration: underline;
+        }
+
+        &.planned {
+          opacity: 0.5;
         }
       }
     }

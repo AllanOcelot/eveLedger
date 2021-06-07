@@ -6,14 +6,13 @@
       <!-- links -->
       <div class="right-aligned">
         <ul class="link-container">
-          <!--
           <li>
-            <router-link to="/">F.A.Q</router-link>
+            <router-link to="/faq">F.A.Q</router-link>
           </li>
+          
           <li>
-            <router-link to="/about">Documentation</router-link>
+            <router-link to="/roadmap">ROADMAP</router-link>
           </li>
-          -->
         </ul>
         <LoginButton />
       </div>
@@ -97,6 +96,7 @@ export default {
     align-items: center;
     height: 100%;
     ul {
+      margin-top: -5px;
       margin-right: 10px;
       display: inline-block;
       li {
