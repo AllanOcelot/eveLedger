@@ -94,7 +94,6 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    box-shadow: 0 5px 10px 5px rgb(0 0 0 / 25%);
 
     .content-container {
       width: 100%;
@@ -165,11 +164,6 @@ export default {
     display: flex;
     padding: 100px 0;
     background: #0a0a13;
-    background-size: 20px 20px;
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-
 
     .feature-list {
       max-width: 80%;
