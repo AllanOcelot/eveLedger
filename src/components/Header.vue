@@ -1,7 +1,9 @@
 <template>
   <div id="nav">
       <div class="left-aligned">
-        <span class="blue">Eve</span><span class="yellow">tricity</span>
+        <router-link to="/">
+          <span class="blue">Eve</span><span class="yellow">tricity</span>
+        </router-link>
       </div>
       <!-- links -->
       <div class="right-aligned">

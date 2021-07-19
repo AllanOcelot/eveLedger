@@ -11,6 +11,15 @@
     </div>
 
     <div class="item-table-wrapper">
+
+    <v-data-table
+      item-key="name"
+      class="elevation-1"
+      loading
+      loading-text="Loading... Please wait"
+    ></v-data-table>
+
+
       <div class="item-table">
         <div class="head">
           <div class="item icon-cont">
