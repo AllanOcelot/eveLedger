@@ -98,15 +98,12 @@ export default {
     flex: 1 auto;
     background: #0a0a13;
     background-size: 20px 20px;
-    padding-top: 50px;
     overflow: hidden;
     clear: both;
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
     color: #f1f1f1;
     a {
-      color: #5ac9e2 !important;
+      color: #7b8af7 !important;
+      text-shadow: none;
     }
 
 
@@ -148,18 +145,17 @@ export default {
         text-align: left;
         margin-bottom: 40px;
         border-radius: 1px;
-        border: 1px solid rgba(255,255,255,0.2);
 
         p.question {
           display: block;
           font-size: 24px;
           margin: 0;
           padding: 10px 20px;
-          background: rgb(1 29 80 / 75%);
+          background: rgb(2 4 6 / 75%);
         }
 
         .answer {
-          background: rgba(0,0,0,0.5);
+          background: rgb(37 37 37 / 50%);
           padding: 20px;
         }
 

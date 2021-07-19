@@ -103,7 +103,7 @@ export default {
       display: inline-block;
       li {
         display: inline-block;
-        margin-right: 10px;
+        margin-right: 20px;
         font-size: 14px;
         line-height: 17px;
       }

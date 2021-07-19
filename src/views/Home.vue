@@ -4,7 +4,7 @@
       <div class="hero-container">
         <div class="content-container">
           <h1><span class="blue">Eve</span><span class="yellow">tricity</span></h1>
-          <h2>Make corp management fun again</h2>
+          <h2>An Eve Online corp information system</h2>
           <LoginButton />
         </div>
       </div>
@@ -102,8 +102,7 @@ export default {
       text-align: center;
       background: rgba(0, 0, 0, 0.65);
       color: #fff;
-      min-height: 625px;
-      height: 90vh;
+      padding: 100px 0;
       align-items: center;
       justify-content: center;
       display: flex;
